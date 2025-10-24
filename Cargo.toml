@@ -1,0 +1,9 @@
+[package]
+name = "glib-2"
+description = "glib-2 raw bindings"
+version = "0.1.0"
+authors = ["Lance Hart <me@lancehart.ca>"]
+edition = "2024"
+repository = "https://github.com/shipsimfan/glib-2"
+license = "GPL-3.0-or-later"
+publish = false
