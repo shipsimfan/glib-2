@@ -1,4 +1,4 @@
-use std::ffi::{c_char, c_int};
+use std::ffi::{c_char, c_int, c_uint, c_void};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -9,6 +9,9 @@ pub type gint = c_int;
 
 #[allow(missing_docs, non_camel_case_types)]
 pub type gchar = c_char;
+
+#[allow(missing_docs, non_camel_case_types)]
+pub type gpointer = *mut c_void;
 
 /// A [`GQuark`] is a non-zero integer which uniquely identifies a particular string.
 ///
@@ -30,6 +33,9 @@ pub type gchar = c_char;
 /// representation for a string. One important advantage of interned strings is that they can be
 /// compared for equality by a simple pointer comparison, rather than using `strcmp`.
 pub type GQuark = guint32;
+
+#[allow(missing_docs, non_camel_case_types)]
+pub type guint = c_uint;
 
 #[allow(missing_docs, non_camel_case_types)]
 pub type guint32 = u32;
