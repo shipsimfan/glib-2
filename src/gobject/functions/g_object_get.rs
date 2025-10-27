@@ -1,5 +1,9 @@
 use crate::{glib::gchar, gobject::GObject};
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::{glib::g_free, gobject::g_object_unref};
+
 #[link(name = "gobject-2.0")]
 unsafe extern "C" {
     /// Gets properties of an object.
