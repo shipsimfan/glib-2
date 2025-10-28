@@ -1,4 +1,6 @@
-use std::ffi::{c_char, c_int, c_uchar, c_uint, c_void};
+use std::ffi::{
+    c_char, c_double, c_float, c_int, c_long, c_short, c_uchar, c_uint, c_ulong, c_ushort, c_void,
+};
 
 // rustdoc imports
 #[allow(unused_imports)]
@@ -20,6 +22,26 @@ pub type gboolean = gint;
 /// preferred in new code.
 #[allow(non_camel_case_types)]
 pub type gchar = c_char;
+
+/// An untyped pointer to constant data, exactly equivalent to `const void*`.
+///
+/// The data pointed to should not be changed.
+///
+/// This is typically used in function prototypes to indicate that the data pointed to will not be
+/// altered by the function.
+///
+/// The standard C `const void*` type should usually be preferred in new code, but
+/// [`gconstpointer`] can be used in contexts where a type name must be a single word.
+#[allow(non_camel_case_types)]
+pub type gconstpointer = *const c_void;
+
+/// Equivalent to the standard C `float` type.
+#[allow(non_camel_case_types)]
+pub type gfloat = c_float;
+
+/// Equivalent to the standard C `double` type.
+#[allow(non_camel_case_types)]
+pub type gdouble = c_double;
 
 /// Equivalent to the standard C `int` type.
 ///
@@ -91,6 +113,23 @@ pub type gint64 = i64;
 #[allow(non_camel_case_types)]
 pub type gintptr = isize;
 
+/// Equivalent to the standard C `long` type.
+///
+/// This type only exists for symmetry with [`gulong`]. The standard C `long` type should be
+/// preferred in new code.
+#[allow(non_camel_case_types)]
+pub type glong = c_long;
+
+/// A signed integer type that is used for file offsets, corresponding to the POSIX type `off_t` as
+/// if compiling with `_FILE_OFFSET_BITS` set to 64. [`goffset`] is always 64 bits wide, even on
+/// 32-bit architectures, and even if `off_t` is only 32 bits.
+///
+/// On platforms with more than one 64-bit standard integer type, even if `off_t` is also 64 bits
+/// in size, [`goffset`] and `off_t` are not necessarily implemented by the same 64-bit integer
+/// type. See [`gsize`] for more details of what this implies.
+#[allow(non_camel_case_types)]
+pub type goffset = gint64;
+
 /// An untyped pointer, exactly equivalent to `void*`.
 ///
 /// The standard C `void*` type should usually be preferred in new code, but [`gpointer`] can be
@@ -120,6 +159,13 @@ pub type gpointer = *mut c_void;
 /// representation for a string. One important advantage of interned strings is that they can be
 /// compared for equality by a simple pointer comparison, rather than using `strcmp`.
 pub type GQuark = guint32;
+
+/// Equivalent to the standard C `short` type.
+///
+/// This type only exists for symmetry with [`gushort`]. The standard C `short` type should be
+/// preferred in new code.
+#[allow(non_camel_case_types)]
+pub type gshort = c_short;
 
 /// An unsigned integer type of the result of the `sizeof` operator, corresponding to the `size_t`
 /// type defined in C99.
@@ -246,3 +292,19 @@ pub type guint64 = u64;
 /// they are the same on many CPU architectures.
 #[allow(non_camel_case_types)]
 pub type guintptr = usize;
+
+/// Equivalent to the standard C `unsigned long` type.
+///
+/// The standard C `unsigned long` type should usually be preferred in new code, but [`gulong`] can
+/// be used in contexts where a type name must be a single word, such as in the [`GType`] name of
+/// [`G_TYPE_ULONG`] or when generating a family of function names for multiple types using macros.
+#[allow(non_camel_case_types)]
+pub type gulong = c_ulong;
+
+/// Equivalent to the standard C `unsigned short` type.
+///
+/// The standard C `unsigned short` type should usually be preferred in new code, but [`gushort`]
+/// can be used in contexts where a type name must be a single word, such as when generating a
+/// family of function names for multiple types using macros.
+#[allow(non_camel_case_types)]
+pub type gushort = c_ushort;
