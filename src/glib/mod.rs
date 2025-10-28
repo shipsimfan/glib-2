@@ -2,6 +2,7 @@
 
 mod constants;
 mod functions;
+mod macros;
 mod objects;
 mod structures;
 mod types;

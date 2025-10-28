@@ -4,7 +4,15 @@ use std::ffi::{
 
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::glib::{FALSE, TRUE};
+use crate::{
+    G_SOURCE_FUNC,
+    glib::{
+        FALSE, G_SOURCE_CONTINUE, G_SOURCE_REMOVE, TRUE, g_idle_add, g_idle_add_full,
+        g_list_foreach, g_slist_foreach, g_source_set_callback, g_timeout_add, g_timeout_add_full,
+    },
+};
+#[allow(unused_imports)]
+use std::ptr::null_mut;
 
 /// A standard boolean type. Variables of this type should only contain the value [`TRUE`] or
 /// [`FALSE`].
@@ -33,13 +41,28 @@ pub type gchar = c_char;
 #[allow(non_camel_case_types)]
 pub type gconstpointer = *const c_void;
 
-/// Equivalent to the standard C `float` type.
-#[allow(non_camel_case_types)]
-pub type gfloat = c_float;
+/// Specifies the type of function which is called when a data element is destroyed. It is passed
+/// the pointer to the data element and should free any memory and resources allocated for it.
+///
+/// # Parameters
+///  * `data` - The data element. The argument can be [`null_mut`].
+pub type GDestroyNotify = extern "C" fn(data: gpointer);
 
 /// Equivalent to the standard C `double` type.
 #[allow(non_camel_case_types)]
 pub type gdouble = c_double;
+
+/// Equivalent to the standard C `float` type.
+#[allow(non_camel_case_types)]
+pub type gfloat = c_float;
+
+/// Specifies the type of functions passed to [`g_list_foreach`] and [`g_slist_foreach`].
+///
+/// # Parameters
+///  * `data` - The element’s data. The argument can be [`null_mut`].
+///  * `user_data` - User data passed to [`g_list_foreach`] or [`g_slist_foreach`]. The argument
+///                  can be [`null_mut`].
+pub type GFunc = extern "C" fn(data: gpointer, user_data: gpointer);
 
 /// Equivalent to the standard C `int` type.
 ///
@@ -176,6 +199,21 @@ pub type gshort = c_short;
 /// affected by this.
 #[allow(non_camel_case_types)]
 pub type gsize = usize;
+
+/// Specifies the type of function passed to [`g_timeout_add`], [`g_timeout_add_full`],
+/// [`g_idle_add`], and [`g_idle_add_full`].
+///
+/// When calling [`g_source_set_callback`], you may need to cast a function of a different type to
+/// this type. Use [`G_SOURCE_FUNC`] to avoid warnings about incompatible function types.
+///
+/// # Parameters
+///  * `user_data` - Data passed to the function, set when the source was created with one of the
+///                  above functions. The argument can be [`null_mut`].
+///
+/// # Return Value
+/// [`FALSE`] if the source should be removed. [`G_SOURCE_CONTINUE`] and [`G_SOURCE_REMOVE`] are
+/// more memorable names for the return value.
+pub type GSourceFunc = extern "C" fn(user_data: gpointer) -> gboolean;
 
 /// A signed variant of [`gsize`], corresponding to the `ssize_t` defined in POSIX or the similar
 /// `SSIZE_T` in Windows.
