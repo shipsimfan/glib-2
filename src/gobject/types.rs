@@ -1,3 +1,4 @@
+use crate::glib::gsize;
 use std::ffi::c_void;
 
 /// The base object type.
@@ -13,3 +14,6 @@ use std::ffi::c_void;
 /// derived) struct, the `GObjectClass` (or derived) struct, and any private data allocated by
 /// `G_ADD_PRIVATE`.
 pub type GObject = c_void;
+
+/// A numerical value which represents the unique identifier of a registered type.
+pub type GType = gsize;

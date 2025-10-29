@@ -1,0 +1,1 @@
+mod g_type_make_fundamental;

@@ -10,6 +10,7 @@ use crate::{
         FALSE, G_SOURCE_CONTINUE, G_SOURCE_REMOVE, TRUE, g_idle_add, g_idle_add_full,
         g_list_foreach, g_slist_foreach, g_source_set_callback, g_timeout_add, g_timeout_add_full,
     },
+    gobject::{G_TYPE_POINTER, G_TYPE_UCHAR, G_TYPE_UINT, G_TYPE_ULONG, GType},
 };
 #[allow(unused_imports)]
 use std::ptr::null_mut;

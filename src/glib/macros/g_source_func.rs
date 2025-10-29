@@ -1,6 +1,6 @@
 // rustdoc imports
 #[allow(unused_imports)]
-use crate::glib::GSourceFunc;
+use crate::glib::{GSourceFunc, g_source_set_callback};
 
 /// Cast a function pointer to a [`GSourceFunc`], suppressing warnings from GCC 8 onwards with
 /// `-Wextra` or `-Wcast-function-type` enabled about the function types being incompatible.

@@ -1,5 +1,9 @@
 use crate::glib::guint;
 
+// rustdoc imports
+#[allow(unused_imports)]
+use crate::glib::g_thread_pool_stop_unused_threads;
+
 #[link(name = "glib-2.0")]
 unsafe extern "C" {
     /// This function will set the maximum interval that a thread waiting in the pool for new tasks
