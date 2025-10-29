@@ -1,3 +1,4 @@
+mod g_error_free;
 mod g_free;
 mod g_free_sized;
 mod g_get_monotonic_time;
@@ -14,6 +15,7 @@ mod g_timeout_add_seconds_full;
 mod g_timeout_source_new;
 mod g_timeout_source_new_seconds;
 
+pub use g_error_free::g_error_free;
 pub use g_free::g_free;
 pub use g_free_sized::g_free_sized;
 pub use g_get_monotonic_time::g_get_monotonic_time;
