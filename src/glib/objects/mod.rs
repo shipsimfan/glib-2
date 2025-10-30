@@ -1,3 +1,4 @@
+mod bytes;
 mod list;
 mod main_context;
 mod main_loop;
@@ -6,6 +7,7 @@ mod slist;
 mod source;
 mod thread_pool;
 
+pub use bytes::*;
 pub use list::*;
 pub use main_context::*;
 pub use main_loop::*;
