@@ -1,4 +1,4 @@
-//! glib-2 raw bindings
+//! glib-2 bindings
 
 #![deny(missing_docs)]
 #![deny(rustdoc::private_intra_doc_links)]
@@ -6,6 +6,4 @@
 #![deny(rustdoc::redundant_explicit_links)]
 #![warn(rustdoc::broken_intra_doc_links)]
 
-pub mod gio;
-pub mod glib;
-pub mod gobject;
+pub mod raw;
