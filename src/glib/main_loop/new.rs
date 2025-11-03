@@ -9,8 +9,15 @@ use std::ptr::null_mut;
 
 impl GMainLoop {
     /// Creates a new [`GMainLoop`] structure
-    pub fn new(context: &GMainContext) -> Self {
-        let handle = unsafe { g_main_loop_new(context.handle(), FALSE) };
+    pub fn new(context: Option<&GMainContext>) -> Self {
+        let handle = unsafe {
+            g_main_loop_new(
+                context
+                    .map(|context| context.handle())
+                    .unwrap_or(null_mut()),
+                FALSE,
+            )
+        };
         unsafe { GMainLoop::new_raw(handle) }
     }
 
