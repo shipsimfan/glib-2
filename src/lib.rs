@@ -10,3 +10,4 @@ pub mod raw;
 
 pub mod gio;
 pub mod glib;
+pub mod gobject;
