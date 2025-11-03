@@ -1,8 +1,12 @@
 use std::ffi::c_void;
 
 mod get_data;
+mod new;
+mod unref;
 
 pub use get_data::g_bytes_get_data;
+pub use new::g_bytes_new;
+pub use unref::g_bytes_unref;
 
 /// A simple reference counted data type representing an immutable sequence of zero or more bytes
 /// from an unspecified origin.
