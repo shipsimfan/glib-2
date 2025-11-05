@@ -7,6 +7,7 @@
 #![warn(rustdoc::broken_intra_doc_links)]
 
 pub mod raw;
+pub mod util;
 
 pub mod gio;
 pub mod glib;

@@ -14,4 +14,7 @@ pub struct GPtrArray<'a, T> {
 
     /// The Rust view of the array
     slice: &'a [*mut T],
+
+    /// Is this array owned?
+    owned: bool,
 }

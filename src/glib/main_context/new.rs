@@ -8,12 +8,12 @@ impl GMainContext {
     /// Creates a new [`GMainContext`] structure
     pub fn new() -> Self {
         let handle = unsafe { g_main_context_new() };
-        unsafe { GMainContext::new_raw(handle) }
+        unsafe { GMainContext::new_raw(handle, true) }
     }
 
     /// Create a new [`GMainContext`] from a raw `handle`
-    pub unsafe fn new_raw(handle: *mut raw::glib::GMainContext) -> Self {
+    pub unsafe fn new_raw(handle: *mut raw::glib::GMainContext, owned: bool) -> Self {
         assert_ne!(handle, null_mut());
-        GMainContext { handle }
+        GMainContext { handle, owned }
     }
 }

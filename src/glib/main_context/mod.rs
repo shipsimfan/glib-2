@@ -10,4 +10,7 @@ mod new;
 pub struct GMainContext {
     /// The handle to underlying main context
     handle: *mut raw::glib::GMainContext,
+
+    /// Is this context owned?
+    owned: bool,
 }

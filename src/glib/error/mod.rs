@@ -10,4 +10,7 @@ mod to_string_lossy;
 pub struct GError {
     /// The handle to the underlying error
     handle: *mut raw::glib::GError,
+
+    /// Is this error owned?
+    owned: bool,
 }

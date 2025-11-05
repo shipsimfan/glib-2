@@ -1,5 +1,6 @@
 use crate::raw;
 
+mod clone;
 mod drop;
 mod get;
 mod new;
@@ -11,4 +12,7 @@ mod run;
 pub struct GMainLoop {
     /// The handle to underlying main loop
     handle: *mut raw::glib::GMainLoop,
+
+    /// Is this loop owned?
+    owned: bool,
 }

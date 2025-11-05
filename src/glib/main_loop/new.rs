@@ -18,12 +18,12 @@ impl GMainLoop {
                 FALSE,
             )
         };
-        unsafe { GMainLoop::new_raw(handle) }
+        unsafe { GMainLoop::new_raw(handle, true) }
     }
 
     /// Create a new [`GMainLoop`] from a raw `handle`
-    pub unsafe fn new_raw(handle: *mut raw::glib::GMainLoop) -> Self {
+    pub unsafe fn new_raw(handle: *mut raw::glib::GMainLoop, owned: bool) -> Self {
         assert_ne!(handle, null_mut());
-        GMainLoop { handle }
+        GMainLoop { handle, owned }
     }
 }
