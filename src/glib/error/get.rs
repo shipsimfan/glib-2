@@ -1,6 +1,7 @@
 use crate::{
     glib::{GError, GQuark},
     raw,
+    util::AsHandle,
 };
 use std::ffi::CStr;
 
@@ -33,5 +34,11 @@ impl GError {
     /// Get the underlying handle to the error
     pub unsafe fn handle(&self) -> *mut raw::glib::GError {
         self.handle
+    }
+}
+
+impl AsHandle for GError {
+    unsafe fn as_handle(&self) -> *mut std::ffi::c_void {
+        self.handle.cast()
     }
 }

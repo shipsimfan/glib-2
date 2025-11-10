@@ -1,5 +1,6 @@
 use crate::raw;
 
+mod from_string;
 mod get;
 mod new;
 

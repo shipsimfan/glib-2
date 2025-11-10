@@ -16,3 +16,6 @@ pub struct GMainLoop {
     /// Is this loop owned?
     owned: bool,
 }
+
+unsafe impl Send for GMainLoop {}
+unsafe impl Sync for GMainLoop {}

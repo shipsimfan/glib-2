@@ -28,7 +28,7 @@ pub trait GAsyncReadyCallback {
     ///  * `source_object` - The object the asynchronous operation was started with.
     ///  * `res` - A [`GAsyncResult`].
     ///  * `data` - User data passed to the callback.
-    fn callback(source_object: Option<&Self::Object>, res: &GAsyncResult, data: Self::UserData);
+    fn callback(source_object: Option<Self::Object>, res: &GAsyncResult, data: Self::UserData);
 
     /// Converts a [`raw::gio::GAsyncReadyCallback`] into a [`GAsyncReadyCallback`]
     extern "C" fn trampoline(
@@ -44,6 +44,6 @@ pub trait GAsyncReadyCallback {
         let res = unsafe { GAsyncResult::new_raw(res, false) };
         let data = unsafe { Self::UserData::from_ptr(data) };
 
-        Self::callback(source_object.as_ref(), &res, data);
+        Self::callback(source_object, &res, data);
     }
 }

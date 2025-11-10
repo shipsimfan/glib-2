@@ -5,6 +5,8 @@ mod g_object_ref;
 mod g_object_set;
 mod g_object_set_data;
 mod g_object_unref;
+mod g_signal_connect_data;
+mod g_signal_handler_disconnect;
 
 pub use g_clear_object::g_clear_object;
 pub use g_object_get::g_object_get;
@@ -13,3 +15,5 @@ pub use g_object_ref::g_object_ref;
 pub use g_object_set::g_object_set;
 pub use g_object_set_data::g_object_set_data;
 pub use g_object_unref::g_object_unref;
+pub use g_signal_connect_data::g_signal_connect_data;
+pub use g_signal_handler_disconnect::g_signal_handler_disconnect;
